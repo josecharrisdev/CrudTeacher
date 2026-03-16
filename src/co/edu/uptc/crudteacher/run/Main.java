@@ -62,8 +62,13 @@ public class Main {
 						System.out.println("Ingrese la fecha de ingreso (dd/mm/yyyy)");
 						String strHireDate = sc.nextLine();
 						SimpleDateFormat format = new SimpleDateFormat("dd/mm/yyyy");
+						
+						/* En este punto puede lanzar un error, si el usuario ingresa
+						 * una fecha en un formato distinto al establecido en la línea 
+						 * anterior*/
 						hireDate = format.parse(strHireDate);
 						
+						/* Si ocurre un error, nunca llegará a esta línea */
 						if(managementTeacher.insertTeacher(nameTeacher, idTeacher, 
 								careerName, hireDate)) {
 							System.out.println(" El registro se agregó correctamente");
@@ -71,6 +76,8 @@ public class Main {
 							System.out.println(" No se agregó el registro");
 						}
 					} catch (ParseException e) {
+						/* Ingresará a este punto si el usuario ingresa una fecha
+						 * en un formato distinto al dd/mm/yyyy.*/
 						System.out.println("La fecha se ingresó en un formato erróneo.");
 					}
 					break;
