@@ -5,6 +5,7 @@ public class Student {
 
 	public Student() {
 	}
+	
 	public Student(String code) {
 		super();
 		this.code = code;

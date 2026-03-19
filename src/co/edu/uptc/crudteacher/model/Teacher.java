@@ -51,6 +51,12 @@ public class Teacher {
 	public void setHireDate(Date hireDate) {
 		this.hireDate = hireDate;
 	}
+
+	@Override
+	public String toString() {
+		return "Teacher [name=" + name + ", id=" + id + ", career=" + career + ", hireDate=" + hireDate
+				+ ", listStudent=" + listStudent + "]";
+	}
 	
 	
 }

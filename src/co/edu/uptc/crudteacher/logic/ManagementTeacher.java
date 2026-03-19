@@ -3,6 +3,7 @@ package co.edu.uptc.crudteacher.logic;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import co.edu.uptc.crudteacher.model.Teacher;
 
@@ -10,9 +11,21 @@ public class ManagementTeacher {
 	
 	private List<Teacher> listTeacher;
 	
-	public ManagementTeacher() {
+	private static ManagementTeacher managementTeacher;
+	
+	private ManagementTeacher() {
 		this.listTeacher = new ArrayList<>();
 	}
+	
+	public static ManagementTeacher getInstance() {
+		if(Objects.isNull(managementTeacher)) {
+			managementTeacher = new ManagementTeacher();
+			return managementTeacher;
+		}
+		return managementTeacher;
+	}
+	
+	
 	
 	public boolean insertTeacher(String name, String id, String career,
 			Date hireDate) {
@@ -25,12 +38,8 @@ public class ManagementTeacher {
 	}
 	
 	public Teacher findTeacherById(String id) {
-		for(Teacher teacher: this.listTeacher) {
-			if(teacher.getId().equals(id)) {
-				return teacher;
-			}
-		}
-		return null;
+		return this.listTeacher.stream().filter(t -> t.getId().equals(id))
+				.findAny().get();
 	}
 	
 	public int findIndexTeacherById(String id) {
@@ -42,24 +51,29 @@ public class ManagementTeacher {
 		return -1;
 	}
 	
-	public boolean updateTeacher(String id, Teacher newTeacher) {
+	public boolean updateTeacher(Teacher newTeacher) {
 		/* Identificar el registro actual */
-		Teacher teacher = this.findTeacherById(id);
+		Teacher teacher = this.findTeacherById(newTeacher.getId());
 		
 		if(teacher == null) {
 			return false;
 		}
 		
 		/* Realizar las asignaciones de la información */
-		if(newTeacher.getName() != null) {
+		if(newTeacher.getName() != null && !newTeacher.getName().isEmpty()) {
 			teacher.setName(newTeacher.getName());
 		}
 		
-		if(newTeacher.getCareer() != null) {
+		if(newTeacher.getCareer() != null && !newTeacher.getCareer().isEmpty()) {
+			teacher.setCareer(newTeacher.getCareer());
+		}
+		
+		if(newTeacher.getHireDate() != null) {
 			teacher.setCareer(newTeacher.getCareer());
 		}
 		/* Actualizarlo en la lista */
-		this.listTeacher.set(this.findIndexTeacherById(id), teacher);
+		this.listTeacher.set(this.findIndexTeacherById(newTeacher.getId()), 
+				teacher);
 		return true;
 	}
 	
