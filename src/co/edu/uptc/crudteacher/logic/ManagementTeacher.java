@@ -3,7 +3,6 @@ package co.edu.uptc.crudteacher.logic;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 import co.edu.uptc.crudteacher.model.Teacher;
 
@@ -11,21 +10,9 @@ public class ManagementTeacher {
 	
 	private List<Teacher> listTeacher;
 	
-	private static ManagementTeacher managementTeacher;
-	
 	private ManagementTeacher() {
 		this.listTeacher = new ArrayList<>();
 	}
-	
-	public static ManagementTeacher getInstance() {
-		if(Objects.isNull(managementTeacher)) {
-			managementTeacher = new ManagementTeacher();
-			return managementTeacher;
-		}
-		return managementTeacher;
-	}
-	
-	
 	
 	public boolean insertTeacher(String name, String id, String career,
 			Date hireDate) {
@@ -43,7 +30,7 @@ public class ManagementTeacher {
 	}
 	
 	public int findIndexTeacherById(String id) {
-		for(int i=0; i<this.listTeacher.size(); i++) {
+		for(int i=0; i < this.listTeacher.size(); i++) {
 			if(this.listTeacher.get(i).getId().equals(id)) {
 				return i;
 			}
@@ -53,8 +40,7 @@ public class ManagementTeacher {
 	
 	public boolean updateTeacher(Teacher newTeacher) {
 		/* Identificar el registro actual */
-		Teacher teacher = this.findTeacherById(newTeacher.getId());
-		
+		Teacher teacher = this.findTeacherById(newTeacher.getId());	
 		if(teacher == null) {
 			return false;
 		}
@@ -83,10 +69,8 @@ public class ManagementTeacher {
 			this.listTeacher.remove(index);
 			return true;
 		}
-		return false;
-		
+		return false;	
 	}
-	
 
 	public List<Teacher> getListTeacher() {
 		return listTeacher;
@@ -95,7 +79,6 @@ public class ManagementTeacher {
 	public void setListTeacher(List<Teacher> listTeacher) {
 		this.listTeacher = listTeacher;
 	}
-	
 	
 	
 }

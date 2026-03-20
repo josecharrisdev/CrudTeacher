@@ -3,9 +3,10 @@ package co.edu.uptc.crudteacher.model;
 import java.util.Date;
 import java.util.List;
 
-public class Teacher {
+import co.edu.uptc.crudteacher.logic.BaseClass;
+
+public class Teacher extends BaseClass{
 	private String name;
-	private String id;
 	private String career;
 	private Date hireDate;
 	private List<Student> listStudent;
@@ -26,12 +27,6 @@ public class Teacher {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
 	}
 	public String getCareer() {
 		return career;
