@@ -25,8 +25,10 @@ public class ManagementTeacher {
 	}
 	
 	public Teacher findTeacherById(String id) {
-		return this.listTeacher.stream().filter(t -> t.getId().equals(id))
-				.findAny().get();
+	    return this.listTeacher.stream()
+	            .filter(t -> t.getId().equals(id))
+	            .findAny()
+	            .orElse(null);
 	}
 	
 	public int findIndexTeacherById(String id) {

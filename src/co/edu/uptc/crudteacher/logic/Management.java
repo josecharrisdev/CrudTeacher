@@ -23,13 +23,10 @@ public class Management <T extends BaseClass> {
 	}
 	
 	public T findObjectById(String id) {
-		List<T> listFiltered = this.listObject.stream()
-				.filter(t -> t.getId().equals(id))
-				.collect(Collectors.toList());
-		if(!listFiltered.isEmpty()) {
-			return listFiltered.stream().findAny().get();
-		}
-		return null;
+	    return this.listObject.stream()
+	            .filter(t -> t.getId().equals(id))
+	            .findAny()
+	            .orElse(null);
 	}
 	
 	public int findIndexObjectById(String id) {
