@@ -36,7 +36,7 @@ public class Main {
 				[4] ELIMINAR STUDENT
 				""";
 		
-		ManagementTeacher managementTeacher = ManagementTeacher.getInstance();
+		ManagementTeacher managementTeacher = new ManagementTeacher();
 		Scanner sc = new Scanner(System.in);
 		boolean flag = true;
 		while(flag) {

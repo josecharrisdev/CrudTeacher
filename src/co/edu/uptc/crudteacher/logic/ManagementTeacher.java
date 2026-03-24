@@ -10,7 +10,7 @@ public class ManagementTeacher {
 	
 	private List<Teacher> listTeacher;
 	
-	private ManagementTeacher() {
+	public ManagementTeacher() {
 		this.listTeacher = new ArrayList<>();
 	}
 	
