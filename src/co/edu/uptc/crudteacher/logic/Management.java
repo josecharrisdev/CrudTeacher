@@ -22,6 +22,7 @@ public class Management <T extends BaseClass> {
 		return false;
 	}
 	
+	/** <b>Description:</b> Realiza el proceso búsqueda de registro */
 	public T findObjectById(String id) {
 	    return this.listObject.stream()
 	            .filter(t -> t.getId().equals(id))
@@ -29,6 +30,7 @@ public class Management <T extends BaseClass> {
 	            .orElse(null);
 	}
 	
+	/** <b>Description:</b> Realiza el proceso búsqueda del indice del registro*/
 	public int findIndexObjectById(String id) {
 		for(int i=0; i < this.listObject.size(); i++) {
 			if(this.listObject.get(i).getId().equals(id)) {
@@ -38,6 +40,7 @@ public class Management <T extends BaseClass> {
 		return -1;
 	}
 	
+	/** <b>Description:</b> Realiza el proceso de actualización de registro */
 	public boolean updateTeacher(T newRecord) {
 		/* Identificar el registro actual */
 		T object = this.findObjectById(newRecord.getId());	
@@ -50,6 +53,7 @@ public class Management <T extends BaseClass> {
 		return true;
 	}
 	
+	/** <b>Description:</b> Realiza el proceso de eliminación de registro */
 	public boolean deleteObject(String id) {
 		int index = this.findIndexObjectById(id);
 		if(index != -1) {
