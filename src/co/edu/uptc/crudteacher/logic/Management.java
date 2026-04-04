@@ -46,7 +46,7 @@ public class Management <T extends BaseClass> {
 		}
 		/* Actualizarlo en la lista */
 		this.listObject.set(this.findIndexObjectById(newRecord.getId()), 
-				object);
+				newRecord);
 		return true;
 	}
 	
